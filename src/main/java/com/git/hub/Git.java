@@ -75,7 +75,7 @@ public class Git {
 
         Process p = Runtime.getRuntime()
                 .exec("git -C /Users/shaid/Documents/MyWorld/ " +
-                        "diff 743cf9730a842213b011e0466281991fdae53024");
+                        "diff fe5c9de559de7d39fb56e7699ace5446e6440cbb");
 
         StreamGobbler errorGobbler = new StreamGobbler(p.getErrorStream(), "ERROR");
         StreamGobbler outputGobbler = new StreamGobbler(p.getInputStream(), "OUTPUT");
