@@ -19,8 +19,10 @@
          ]
       },
       "sub-menu":{
-         "id":"zip",
-         "value":"zip",
+         "id":"zip1",
+         "id2":"zip2",
+         "id3":"zip3",
+         "value":"Zip",
          "popup":{
             "menuitem":[
                {
