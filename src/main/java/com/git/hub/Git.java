@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Git {
 
@@ -75,14 +76,14 @@ public class Git {
 
         Process p = Runtime.getRuntime()
                 .exec("git -C /Users/shaid/Documents/MyWorld/ " +
-                        "diff fe5c9de559de7d39fb56e7699ace5446e6440cbb");
+                        "diff d3b2ca47f10eb97116c0ca02247dd885f72ae071");
 
         StreamGobbler errorGobbler = new StreamGobbler(p.getErrorStream(), "ERROR");
         StreamGobbler outputGobbler = new StreamGobbler(p.getInputStream(), "OUTPUT");
         outputGobbler.start();
-        errorGobbler.start();
+        //errorGobbler.start();
         int exit = p.waitFor();
-        errorGobbler.join();
+        //errorGobbler.join();
         outputGobbler.join();
         if (exit != 0) {
             throw new AssertionError(String.format("runCommand returned %d", exit));
@@ -147,7 +148,16 @@ public class Git {
 
                     }
                 }
-                System.out.println(diff);
+
+                List<Diff> collect = diff.stream().filter(x -> x.event.equals(EVENT.ADD)).collect(Collectors.toList());
+                System.out.println(collect);
+
+                Apple apple = new Apple(collect);
+                String fileName = "dbscript";
+
+                InputStream in = apple.getFileAsIOStream(fileName);
+                apple.printInputStream(in);
+
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }

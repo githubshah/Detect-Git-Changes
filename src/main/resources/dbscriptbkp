@@ -7,8 +7,8 @@ CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PAGE_INFO('titanCBCompassOverview','openPag
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_CLI_SVC_INFO('titanCBCompassOverview','hussh7s','None');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','SwipeRight','continue','Y','titanCBCompassGetStarted','SwipeRight','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','title', 'Continue','Y','titanCBCompassGetStarted','videoFinishEvent','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PAGE_INFO('titanCBCompassGetStarted','presentationStyle','','Y',1,'modal123','5G Home Gemini','','','','','hussh7s','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PAGE_INFO('titanCBCompassOverviewTranscript','openPage','modal123','Y',1,'modal','5G Home Gemini','','','','','hussh7s','N');
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PAGE_INFO('titanCBCompassGetStarted','openPage','','Y',1,'modal123','5G Home Gemini','','','','','hussh7s','N');
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PAGE_INFO('titanCBCompassOverviewTranscript','openPage','','Y',1,'modal','5G Home Gemini','','','','','hussh7s','N');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','Links','Video transcript','Y','titanCBCompassOverviewTranscript','Links','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','template','gmFullVideoAutoEvent','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzdl.page.displayChannel','MVA','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');

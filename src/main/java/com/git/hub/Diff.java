@@ -29,4 +29,44 @@ public class Diff {
                 " value='" + value + '\'' +
                 '}' + "\n";
     }
+
+    public EVENT getEvent() {
+        return event;
+    }
+
+    public void setEvent(EVENT event) {
+        this.event = event;
+    }
+
+    public String getParent() {
+        return parent;
+    }
+
+    public void setParent(String parent) {
+        this.parent = parent;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 }

@@ -4,7 +4,7 @@
       "parentPageType": "titanCBGettingStarted",
       "ButtonMap": {
           "SwipeRight": {
-              "presentationStyle": "modal",
+              "presentationStyle": "modal123",
               "tryToReplaceFirst": false,
               "disableNativeAction": false,
               "disableAction": false,
