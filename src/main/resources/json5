@@ -5,14 +5,22 @@
    },
    {
       "id":"10044",
-      "type":"Regular4576356"
-   }
-   {
-      "id":"10045",
-      "type":"Regular457635645"
-   }
+      "type":"update"
+   },
    {
       "id":"10046",
       "type":"Regular457635646"
+   },
+   {
+      "id":"100467",
+      "type":"added"
+   },
+   {
+      "id":"100468",
+      "type":"added"
+   },
+   {
+      "id":"100469",
+      "type":"added"
    }
 ]
