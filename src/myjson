@@ -33,7 +33,7 @@
                },
                {
                   "value":"Save",
-                  "onclick":"SaveDoc()"
+                  "onclick":"SaveDoc1()"
                }
             ]
          }
