@@ -1,10 +1,6 @@
 package com.git.hub;
 
-import sun.misc.ClassLoaderUtil;
-
 import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
@@ -30,7 +26,10 @@ class Apple {
 
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+               // System.out.println(line);
+                if(line.contains("modal")){
+                    System.out.println("ji");
+                }
             }
 
         } catch (IOException e) {
