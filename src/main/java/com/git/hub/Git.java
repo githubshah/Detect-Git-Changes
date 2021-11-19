@@ -75,7 +75,7 @@ public class Git {
 
         Process p = Runtime.getRuntime()
                 .exec("git -C /Users/shaid/Documents/MyWorld/ " +
-                        "diff out/production/MyWorld/json4");
+                        "diff 57e8bff86d4bfb81b8ea288e2b598ddbc272b84b");
 
         StreamGobbler errorGobbler = new StreamGobbler(p.getErrorStream(), "ERROR");
         StreamGobbler outputGobbler = new StreamGobbler(p.getInputStream(), "OUTPUT");
@@ -106,7 +106,7 @@ public class Git {
                 String parent = "";
                 List<Diff> diff = new ArrayList<>();
                 while ((line = br.readLine()) != null) {
-                    //System.out.println(line);
+
                     if (line.contains(":{")) {
                         parent = line.substring(1).trim();
                     }
@@ -116,12 +116,11 @@ public class Git {
                             continue;
 
                         EVENT event;
-                        if (line.startsWith("- ")) {
+                        if (line.startsWith("- ") || line.startsWith("-\t")) {
                             event = EVENT.DELETED;
                         } else {
                             event = EVENT.ADD;
                         }
-
                         String parent1 = parent.trim().replace(":{", "").replace('"', ' ').trim();
                         String key;
                         String value;
