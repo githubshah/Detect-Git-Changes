@@ -1,7 +1,7 @@
 {
    "menu":{
-      "id":"file",
-      "value":"File",
+      "id":"file wile",
+      "value":"File Wile",
       "a":23
       "popup":{
          "menuitem":[
@@ -33,7 +33,7 @@
                },
                {
                   "value":"Save",
-                  "onclick":"SaveDoc1()"
+                  "onclick":"SaveDoc1() call, Delete() noncall"
                }
             ]
          }
