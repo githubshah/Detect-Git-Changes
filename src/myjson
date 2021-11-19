@@ -2,6 +2,7 @@
    "menu":{
       "id":"file",
       "value":"File",
+      "a":2
       "popup":{
          "menuitem":[
             {
@@ -21,6 +22,7 @@
       "sub-menu":{
          "id":"zip1",
          "value":"Zip",
+         "a":1,
          "popup":{
             "menuitem":[
                {
