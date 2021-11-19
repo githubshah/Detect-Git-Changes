@@ -1,6 +1,8 @@
 {
     "glossary": {
-        "title": "example glossary",
+        "title1": "example glossary1",
+	 "title2": "example glossary2",
+	 "title3": "example glossary3",
 		"GlossDiv": {
             "title": "S",
 			"GlossList": {

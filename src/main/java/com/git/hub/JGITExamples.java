@@ -1,4 +1,4 @@
-package hub;
+package com.git.hub;
 
 import java.io.IOException;
 import java.nio.file.Path;

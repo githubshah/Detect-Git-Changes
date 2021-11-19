@@ -1,4 +1,4 @@
-package hub;
+package com.git.hub;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -75,7 +75,7 @@ public class Git {
 
         Process p = Runtime.getRuntime()
                 .exec("git -C /Users/shaid/Documents/MyWorld/ " +
-                        "diff 4e2d9bb2b4ac235bf1343f385991c705c6ccdf44");
+                        "diff out/production/MyWorld/json4");
 
         StreamGobbler errorGobbler = new StreamGobbler(p.getErrorStream(), "ERROR");
         StreamGobbler outputGobbler = new StreamGobbler(p.getInputStream(), "OUTPUT");
@@ -106,6 +106,7 @@ public class Git {
                 String parent = "";
                 List<Diff> diff = new ArrayList<>();
                 while ((line = br.readLine()) != null) {
+                    //System.out.println(line);
                     if (line.contains(":{")) {
                         parent = line.substring(1).trim();
                     }
@@ -120,8 +121,6 @@ public class Git {
                         } else {
                             event = EVENT.ADD;
                         }
-
-                        //if (event == EVENT.DELETED) continue;
 
                         String parent1 = parent.trim().replace(":{", "").replace('"', ' ').trim();
                         String key;

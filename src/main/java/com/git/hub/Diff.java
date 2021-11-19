@@ -1,4 +1,4 @@
-package hub;
+package com.git.hub;
 
 enum EVENT {
     ADD, UPDATED, DELETED
