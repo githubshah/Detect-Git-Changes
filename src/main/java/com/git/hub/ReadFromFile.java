@@ -90,4 +90,20 @@ class DBScript {
         }
 
     }
+
+    public static void print(InputStream is){
+        try (InputStreamReader streamReader =
+                     new InputStreamReader(is, StandardCharsets.UTF_8);
+             BufferedReader reader = new BufferedReader(streamReader)) {
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
