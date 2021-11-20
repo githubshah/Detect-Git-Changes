@@ -10,12 +10,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
 public class Git {
 
     // example of usage
-    private static void initAndAddFile() throws IOException, InterruptedException {
+    private static void initAndAddFile() throws Exception {
         Path directory = Paths.get("c:\\temp\\example");
         Files.createDirectories(directory);
         gitInit(directory);
@@ -25,7 +26,7 @@ public class Git {
     }
 
     // example of usage
-    private static void cloneAndAddFile() throws IOException, InterruptedException {
+    private static void cloneAndAddFile() throws Exception {
         String originUrl = "https://github.com/githubshah/MyWorld.git";
         Path directory = Paths.get("c:\\temp\\TokenReplacer");
         gitClone(directory, originUrl);
@@ -35,55 +36,50 @@ public class Git {
         gitPush(directory);
     }
 
-    public static void gitInit(Path directory) throws IOException, InterruptedException {
+    public static void gitInit(Path directory) throws Exception {
         runCommand(directory, "git", "init");
     }
 
-    public static void gitBranch(Path directory) throws IOException, InterruptedException {
+    public static void gitBranch(Path directory) throws Exception {
         runCommand(directory, "git", "branch");
     }
 
-    public static void gitDiff(Path directory) throws IOException, InterruptedException {
+    public static void gitDiff(Path directory) throws Exception {
         runCommand(directory, "git", "diff", "d0dfaad9ee4d44dbf085b3db24c034ac75d75e30");
     }
 
-
-    public static void gitStage(Path directory) throws IOException, InterruptedException {
+    public static void gitStage(Path directory) throws Exception {
         runCommand(directory, "git", "add", "-A");
     }
 
-    public static void gitCommit(Path directory, String message) throws IOException, InterruptedException {
+    public static void gitCommit(Path directory, String message) throws Exception {
         runCommand(directory, "git", "commit", "-m", message);
     }
 
-    public static void gitPush(Path directory) throws IOException, InterruptedException {
+    public static void gitPush(Path directory) throws Exception {
         runCommand(directory, "git", "push");
     }
 
-    public static void gitClone(Path directory, String originUrl) throws IOException, InterruptedException {
+    public static void gitClone(Path directory, String originUrl) throws Exception {
         runCommand(directory.getParent(), "git", "clone", originUrl, directory.getFileName().toString());
     }
 
-    public static void runCommand(Path directory, String... command) throws IOException, InterruptedException {
+    public static void runCommand(Path directory, String... command) throws Exception {
         Objects.requireNonNull(directory, "directory");
         if (!Files.exists(directory)) {
             throw new RuntimeException("can't run command in non-existing directory '" + directory + "'");
         }
-//		ProcessBuilder pb = new ProcessBuilder()
-//				.command(command)
-//				.directory(directory.toFile());
-//		Process p = pb.start();
 
-        Process p = Runtime.getRuntime()
-                .exec("git -C /Users/shaid/Documents/MyWorld/ " +
-                        "diff d3b2ca47f10eb97116c0ca02247dd885f72ae071");
+        ProcessBuilder pb = new ProcessBuilder()
+                .command(command)
+                .directory(directory.toFile());
+        Process p = pb.start();
 
         StreamGobbler errorGobbler = new StreamGobbler(p.getErrorStream(), "ERROR");
         StreamGobbler outputGobbler = new StreamGobbler(p.getInputStream(), "OUTPUT");
-        outputGobbler.start();
-        //errorGobbler.start();
+        errorGobbler.start();
         int exit = p.waitFor();
-        //errorGobbler.join();
+        errorGobbler.join();
         outputGobbler.join();
         if (exit != 0) {
             throw new AssertionError(String.format("runCommand returned %d", exit));
@@ -102,6 +98,52 @@ public class Git {
 
         @Override
         public void run() {
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(is));) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    System.out.println(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static List<Diff> getGitChanges(Path directory, String command) throws Exception {
+        Objects.requireNonNull(directory, "directory");
+        if (!Files.exists(directory)) {
+            throw new RuntimeException("can't run command in non-existing directory '" + directory + "'");
+        }
+
+        Process p = Runtime.getRuntime().exec(command);
+
+        StreamCallable errorGobbler = new StreamCallable(p.getErrorStream(), "ERROR");
+        StreamCallable outputGobbler = new StreamCallable(p.getInputStream(), "OUTPUT");
+        List<Diff> callere = outputGobbler.call();
+
+        int exit = p.waitFor();
+
+        if (exit != 0) {
+            throw new AssertionError(String.format("runCommand returned %d", exit));
+        }
+
+        System.out.println(callere);
+        return callere;
+    }
+
+    private static class StreamCallable implements Callable {
+
+        private final InputStream is;
+        private final String type;
+
+        private StreamCallable(InputStream is, String type) {
+            this.is = is;
+            this.type = type;
+        }
+
+        @Override
+        public List<Diff> call() throws Exception {
+            List<Diff> collect = new ArrayList<>();
             try (BufferedReader br = new BufferedReader(new InputStreamReader(is));) {
                 String line;
                 String parent = "";
@@ -149,18 +191,12 @@ public class Git {
                     }
                 }
 
-                List<Diff> collect = diff.stream().filter(x -> x.event.equals(EVENT.ADD)).collect(Collectors.toList());
-                System.out.println(collect);
-
-                Apple apple = new Apple(collect);
-                String fileName = "dbscript";
-
-                InputStream in = apple.getFileAsIOStream(fileName);
-                apple.printInputStream(in);
+                collect = diff.stream().filter(x -> x.event.equals(EVENT.ADD)).collect(Collectors.toList());
 
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }
+            return collect;
         }
     }
 

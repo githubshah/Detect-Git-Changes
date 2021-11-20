@@ -1,31 +1,24 @@
 package com.git.hub;
 
-import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class JGITExamples {
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-
+    public static void main(String[] args) throws Exception {
 
         Path path = Paths.get("/Users/shaid/Documents/MyWorld");
-        // git diff d0dfaad9ee4d44dbf085b3db24c034ac75d75e30 | grep '^[+|-][^+|-]'
-        //Git.runCommand(path, "git","diff","d0dfaad9ee4d44dbf085b3db24c034ac75d75e30", "| grep \'^[+|-][^+|-]\'");
-        Git.runCommand(path, "git","diff","d3b2ca47f10eb97116c0ca02247dd885f72ae071", "| grep \'^[+|-][^+|-]\'");
+        String cmd = "git -C /Users/shaid/Documents/MyWorld/ diff d3b2ca47f10eb97116c0ca02247dd885f72ae071";
 
-//        Process exec = Runtime.getRuntime().exec("git branch");
-//        InputStream is = exec.getInputStream();
-//        try (BufferedReader br = new BufferedReader(new InputStreamReader(is));) {
-//            String line;
-//            while ((line = br.readLine()) != null) {
-//                //System.out.println(type + ">> " + line);
-//                System.out.println(line);
-//            }
-//        } catch (IOException ioe) {
-//            ioe.printStackTrace();
-//        }
+        List<Diff> gitChanges = Git.getGitChanges(path, cmd);
 
+        Apple apple = new Apple(gitChanges);
+        String fileName = "dbscript";
+
+        InputStream in = apple.getFileAsIOStream(fileName);
+        apple.printInputStream(in);
 
     }
 }
