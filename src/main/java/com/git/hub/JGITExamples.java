@@ -15,7 +15,7 @@ public class JGITExamples {
 
         /* Get DB scripts corresponding to json changes */
         String dbScriptFile = "dbscript";
-        List<String> dbScripts = new DBScript().compare(gitChanges, dbScriptFile);
+        List<String> dbScripts = DBScript.compare(gitChanges, dbScriptFile);
         System.out.println("db scripts. to be run.." + dbScripts);
 
     }

@@ -11,22 +11,22 @@ import java.util.stream.Collectors;
 
 class DBScript {
 
-    List<Diff> diffs;
-    Map<String, String> valueKey;
-    List<String> values;
-    String fileName;
+    static List<Diff> diffs;
+    static Map<String, String> valueKey;
+    static List<String> values;
+    static String fileName;
 
-    public List<String> compare(List<Diff> collect, String fileName) {
+    public static List<String> compare(List<Diff> collect, String fileName1) {
         diffs = collect;
         valueKey = diffs.stream().collect(Collectors.toMap(Diff::getValue, Diff::getKey));
         values = diffs.stream().map(x -> x.value).collect(Collectors.toList());
         values.remove("");
-        this.fileName = fileName;
+        fileName = fileName1;
         return getDBScripts(getFileAsIOStream());
     }
 
-    public InputStream getFileAsIOStream() {
-        InputStream ioStream = this.getClass()
+    public static InputStream getFileAsIOStream() {
+        InputStream ioStream = DBScript.class
                 .getClassLoader()
                 .getResourceAsStream(fileName);
 
@@ -37,7 +37,7 @@ class DBScript {
     }
 
     // print input stream
-    public List<String> getDBScripts(InputStream is) {
+    public static List<String> getDBScripts(InputStream is) {
         List<String> rows = new ArrayList<>();
         List<String> dbScripts = new ArrayList<>();
         try (InputStreamReader streamReader =
