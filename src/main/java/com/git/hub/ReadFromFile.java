@@ -19,7 +19,7 @@ class DBScript {
     public static List<String> compare(List<Diff> collect, String fileName1) {
         diffs = collect;
         valueKey = diffs.stream().collect(Collectors.toMap(Diff::getValue, Diff::getKey));
-        values = diffs.stream().map(x -> x.value).collect(Collectors.toList());
+        values = diffs.stream().map(x -> x.getValue()).collect(Collectors.toList());
         values.remove("");
         fileName = fileName1;
         return getDBScripts(getFileAsIOStream());

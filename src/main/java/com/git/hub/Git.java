@@ -188,7 +188,7 @@ public class Git {
                     }
                 }
 
-                gitDiff = diff.stream().filter(x -> x.event.equals(EVENT.ADD)).collect(Collectors.toList());
+                gitDiff = diff.stream().filter(x -> x.getEvent().equals(EVENT.ADD)).collect(Collectors.toList());
 
             } catch (IOException ioe) {
                 ioe.printStackTrace();
