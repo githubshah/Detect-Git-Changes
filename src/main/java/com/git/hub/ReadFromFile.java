@@ -14,17 +14,18 @@ class DBScript {
     List<Diff> diffs;
     Map<String, String> valueKey;
     List<String> values;
+    String fileName;
 
-    public DBScript(List<Diff> collect) {
+    public List<String> compare(List<Diff> collect, String fileName) {
         diffs = collect;
-
         valueKey = diffs.stream().collect(Collectors.toMap(Diff::getValue, Diff::getKey));
         values = diffs.stream().map(x -> x.value).collect(Collectors.toList());
         values.remove("");
-
+        this.fileName = fileName;
+        return getDBScripts(getFileAsIOStream());
     }
 
-    public InputStream getFileAsIOStream(final String fileName) {
+    public InputStream getFileAsIOStream() {
         InputStream ioStream = this.getClass()
                 .getClassLoader()
                 .getResourceAsStream(fileName);
@@ -90,18 +91,4 @@ class DBScript {
         }
 
     }
-}
-
-public class ReadFromFile {
-
-    public static void main(String[] args) throws IOException {
-
-        String fileName = "dbscript";
-
-        DBScript apple = new DBScript(new ArrayList<>());
-        InputStream in = apple.getFileAsIOStream(fileName);
-        apple.getDBScripts(in);
-    }
-
-
 }

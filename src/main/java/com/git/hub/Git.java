@@ -109,7 +109,7 @@ public class Git {
         }
     }
 
-    public static List<Diff> getGitChanges(Path directory, String command) throws Exception {
+    public static List<Diff> getJsonChangesfromGIT(Path directory, String command) throws Exception {
         Objects.requireNonNull(directory, "directory");
         if (!Files.exists(directory)) {
             throw new RuntimeException("can't run command in non-existing directory '" + directory + "'");

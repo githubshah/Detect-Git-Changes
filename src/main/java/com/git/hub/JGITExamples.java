@@ -11,12 +11,11 @@ public class JGITExamples {
         /* Get Json changes from git */
         Path path = Paths.get("/Users/shaid/Documents/MyWorld");
         String cmd = "git -C /Users/shaid/Documents/MyWorld/ diff d3b2ca47f10eb97116c0ca02247dd885f72ae071";
-        List<Diff> gitChanges = Git.getGitChanges(path, cmd);
+        List<Diff> gitChanges = Git.getJsonChangesfromGIT(path, cmd);
 
         /* Get DB scripts corresponding to json changes */
-        DBScript dbScript = new DBScript(gitChanges);
-        String fileName = "dbscript";
-        List<String> dbScripts = dbScript.getDBScripts(dbScript.getFileAsIOStream(fileName));
+        String dbScriptFile = "dbscript";
+        List<String> dbScripts = new DBScript().compare(gitChanges, dbScriptFile);
         System.out.println("db scripts. to be run.." + dbScripts);
 
     }
