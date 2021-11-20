@@ -168,7 +168,7 @@ public class Git {
                             key = "NAN";
                             value = line.substring(1).trim();
                             value = value.substring(0, value.length() - 1);
-                            if (value.endsWith(",")) value.substring(0, value.length() - 1);
+                            if (value.endsWith(",")) value = value.substring(0, value.length() - 1);
                             diff.add(new Diff(event, parent1, line, key, value.trim()));
                         } else {
                             String[] split = line.split(":");
