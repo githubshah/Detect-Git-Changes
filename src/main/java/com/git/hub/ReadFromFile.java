@@ -9,13 +9,13 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-class Apple {
+class DBScript {
 
     List<Diff> diffs;
     Map<String, String> valueKey;
     List<String> values;
 
-    public Apple(List<Diff> collect) {
+    public DBScript(List<Diff> collect) {
         diffs = collect;
 
         valueKey = diffs.stream().collect(Collectors.toMap(Diff::getValue, Diff::getKey));
@@ -36,8 +36,9 @@ class Apple {
     }
 
     // print input stream
-    public void printInputStream(InputStream is) {
+    public List<String> getDBScripts(InputStream is) {
         List<String> rows = new ArrayList<>();
+        List<String> dbScripts = new ArrayList<>();
         try (InputStreamReader streamReader =
                      new InputStreamReader(is, StandardCharsets.UTF_8);
              BufferedReader reader = new BufferedReader(streamReader)) {
@@ -62,19 +63,19 @@ class Apple {
                 }
             });
             if (inc.get() == 1) {
-                System.out.println(list);
+                dbScripts.add(list.get(0));
             } else {
                 list.forEach(row -> {
                     valueKey.forEach((v, k) -> {
                         if (row.contains(k)) {
-                            System.out.println(row);
+                            dbScripts.add(row);
                         }
                     });
                 });
             }
         });
 
-
+        return dbScripts;
     }
 
     // print a file
@@ -97,9 +98,9 @@ public class ReadFromFile {
 
         String fileName = "dbscript";
 
-        Apple apple = new Apple(new ArrayList<>());
+        DBScript apple = new DBScript(new ArrayList<>());
         InputStream in = apple.getFileAsIOStream(fileName);
-        apple.printInputStream(in);
+        apple.getDBScripts(in);
     }
 
 

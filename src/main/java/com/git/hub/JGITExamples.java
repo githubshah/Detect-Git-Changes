@@ -14,11 +14,12 @@ public class JGITExamples {
 
         List<Diff> gitChanges = Git.getGitChanges(path, cmd);
 
-        Apple apple = new Apple(gitChanges);
+        DBScript dbScript = new DBScript(gitChanges);
         String fileName = "dbscript";
 
-        InputStream in = apple.getFileAsIOStream(fileName);
-        apple.printInputStream(in);
+        List<String> dbScripts = dbScript.getDBScripts(dbScript.getFileAsIOStream(fileName));
+        System.out.println("db scripts. to be run..");
+        System.out.println(dbScripts);
 
     }
 }

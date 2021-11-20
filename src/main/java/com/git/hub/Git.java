@@ -117,18 +117,15 @@ public class Git {
 
         Process p = Runtime.getRuntime().exec(command);
 
-        StreamCallable errorGobbler = new StreamCallable(p.getErrorStream(), "ERROR");
         StreamCallable outputGobbler = new StreamCallable(p.getInputStream(), "OUTPUT");
-        List<Diff> callere = outputGobbler.call();
+        List<Diff> gitChanges = outputGobbler.call();
 
         int exit = p.waitFor();
 
         if (exit != 0) {
             throw new AssertionError(String.format("runCommand returned %d", exit));
         }
-
-        System.out.println(callere);
-        return callere;
+        return gitChanges;
     }
 
     private static class StreamCallable implements Callable {
@@ -142,8 +139,8 @@ public class Git {
         }
 
         @Override
-        public List<Diff> call() throws Exception {
-            List<Diff> collect = new ArrayList<>();
+        public List<Diff> call() {
+            List<Diff> gitDiff = new ArrayList<>();
             try (BufferedReader br = new BufferedReader(new InputStreamReader(is));) {
                 String line;
                 String parent = "";
@@ -191,12 +188,12 @@ public class Git {
                     }
                 }
 
-                collect = diff.stream().filter(x -> x.event.equals(EVENT.ADD)).collect(Collectors.toList());
+                gitDiff = diff.stream().filter(x -> x.event.equals(EVENT.ADD)).collect(Collectors.toList());
 
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }
-            return collect;
+            return gitDiff;
         }
     }
 
