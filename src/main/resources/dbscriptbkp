@@ -10,7 +10,7 @@ CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PAGE_INFO('titanCBCompassGetStarted','openPage','','Y',1,'modal123','5G Home Gemini','','','','','hussh7s','N');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PAGE_INFO('titanCBCompassOverviewTranscript','openPage','','Y',1,'modal','5G Home Gemini','','','','','hussh7s','N');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','Links','Video transcript','Y','titanCBCompassOverviewTranscript','Links','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','template','gmFullVideoAutoEvent','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','template','gmFullVideoAutoEvent123456','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzdl.page.displayChannel','MVA','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzwi.mvmapp.pageName','/mf/cband/home setup/Router location','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzdl.page.id','titanCBRouterLocation','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
