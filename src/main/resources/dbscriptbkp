@@ -5,7 +5,7 @@
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PROPERTY('MSS_MF','LOG_TITANCBCOMPASSOVERVIEW','true','Logging flag for titanCBCompassOverview','konerva');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PAGE_INFO('titanCBCompassOverview','openPage','','Y',1,'push','titanCBGettingStarted','','','','','hussh7s','N');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_CLI_SVC_INFO('titanCBCompassOverview','hussh7s','None');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','SwipeRight','continue','Y','titanCBCompassGetStarted','SwipeRight','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','SwipeRight','shaid','Y','titanCBCompassGetStarted','SwipeRight','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','title', 'Continue','Y','titanCBCompassGetStarted','videoFinishEvent','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PAGE_INFO('titanCBCompassGetStarted','openPage','','Y',1,'modal123','5G Home Gemini','','','','','hussh7s','N');
 CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PAGE_INFO('titanCBCompassOverviewTranscript','openPage','','Y',1,'modal','5G Home Gemini','','','','','hussh7s','N');
