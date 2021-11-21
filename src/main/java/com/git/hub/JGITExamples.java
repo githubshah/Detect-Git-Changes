@@ -10,8 +10,12 @@ public class JGITExamples {
 
 
         Path path = Paths.get("/Users/shaid/Documents/MyWorld");
-        Git.gitLogInline(path);
-        Git.gitDiff(path);
+        //Git.gitLogInline(path);
+
+        String diffCMD = "git -C /Users/shaid/Documents/MyWorld/ log --oneline";
+        String logCallable = Git.getLogCallable(path, diffCMD);
+        System.out.println(logCallable);
+        //Git.gitDiff(path);
         //extracted(path);
     }
 

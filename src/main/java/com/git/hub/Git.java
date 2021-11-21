@@ -1,16 +1,15 @@
 package com.git.hub;
 
 import com.git.hub.task.DiffCallable;
+import com.git.hub.task.LogCallable;
+import com.git.hub.task.StreamGobbler;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class Git {
 
@@ -97,29 +96,6 @@ public class Git {
         }
     }
 
-    private static class StreamGobbler extends Thread {
-
-        private final InputStream is;
-        private final String type;
-
-        private StreamGobbler(InputStream is, String type) {
-            this.is = is;
-            this.type = type;
-        }
-
-        @Override
-        public void run() {
-            try (BufferedReader br = new BufferedReader(new InputStreamReader(is));) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    System.out.println(line);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     public static List<Diff> getJsonChangesfromGIT(Path directory, String command) throws Exception {
         Objects.requireNonNull(directory, "directory");
         if (!Files.exists(directory)) {
@@ -137,5 +113,24 @@ public class Git {
             throw new AssertionError(String.format("runCommand returned %d", exit));
         }
         return gitChanges;
+    }
+
+    public static String getLogCallable(Path directory, String command) throws Exception {
+        Objects.requireNonNull(directory, "directory");
+        if (!Files.exists(directory)) {
+            throw new RuntimeException("can't run command in non-existing directory '" + directory + "'");
+        }
+
+        Process p = Runtime.getRuntime().exec(command);
+
+        LogCallable outputGobbler = new LogCallable(p.getInputStream(), "OUTPUT");
+        String commitId = outputGobbler.call();
+
+        boolean exit = p.waitFor(2L, TimeUnit.SECONDS);
+
+        if (!exit) {
+            throw new AssertionError(String.format("runCommand returned %d", exit));
+        }
+        return commitId;
     }
 }
