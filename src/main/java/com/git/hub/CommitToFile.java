@@ -4,13 +4,13 @@ package com.git.hub;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
-import java.util.Date;
 
 public class CommitToFile {
 
-    public static void updateCommit(String[] args) {
+
+    public void updateCommit(CommitHistory shaid) {
         ObjectMapper mapper = new ObjectMapper();
-        CommitHistory shaid = new CommitHistory("1234", new Date(), "shaid");
+
         File file = new File("person.json");
         try {
 
@@ -23,5 +23,18 @@ public class CommitToFile {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public CommitHistory getSavedCommit() {
+        ObjectMapper mapper = new ObjectMapper();
+
+        File file = new File("person.json");
+        try {
+            CommitHistory car = mapper.readValue(file, CommitHistory.class);
+            return car;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
