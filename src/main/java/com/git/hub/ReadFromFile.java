@@ -11,20 +11,23 @@ import java.util.stream.Collectors;
 
 class DBScript {
 
-    static List<Diff> diffs;
-    static Map<String, String> valueKey;
-    static List<String> values;
-    static String fileName;
+    private List<Diff> diffs;
+    private Map<String, String> valueKey;
+    private List<String> values;
+    private String fileName;
 
-    public static List<String> compare(List<Diff> collect, String fileName1) {
-        diffs = collect;
-        values = diffs.stream().map(x -> x.getValue()).filter(x -> !x.isEmpty()).collect(Collectors.toList());
-        valueKey = diffs.stream().collect(Collectors.toMap(Diff::getValue, Diff::getKey));
-        fileName = fileName1;
+    public List<String> compare(List<Diff> collect, String fileName1) {
+        this.diffs = collect;
+        this.values = diffs.stream().map(Diff::getValue).filter(x -> !x.isEmpty()).collect(Collectors.toList());
+        this.valueKey = diffs.stream().collect(Collectors.toMap(Diff::getValue, Diff::getKey, (address1, address2) -> {
+            System.out.println("duplicate key found! > " + address2);
+            return address2;
+        }));
+        this.fileName = fileName1;
         return getDBScripts(getFileAsIOStream());
     }
 
-    public static InputStream getFileAsIOStream() {
+    private InputStream getFileAsIOStream() {
         InputStream ioStream = DBScript.class
                 .getClassLoader()
                 .getResourceAsStream(fileName);
@@ -36,7 +39,7 @@ class DBScript {
     }
 
     // print input stream
-    public static List<String> getDBScripts(InputStream is) {
+    private List<String> getDBScripts(InputStream is) {
         List<String> rows = new ArrayList<>();
         List<String> dbScripts = new ArrayList<>();
         try (InputStreamReader streamReader =
@@ -91,7 +94,7 @@ class DBScript {
 
     }
 
-    public static void print(InputStream is){
+    public static void print(InputStream is) {
         try (InputStreamReader streamReader =
                      new InputStreamReader(is, StandardCharsets.UTF_8);
              BufferedReader reader = new BufferedReader(streamReader)) {
