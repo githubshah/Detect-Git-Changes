@@ -60,11 +60,11 @@ public class Git {
         runCommand(directory, "git", "push");
     }
 
-    public static void diffPull(Path directory) throws Exception {
+    public static void gitPull(Path directory) throws Exception {
         runCommand(directory, "git", "pull");
     }
 
-    public static void log(Path directory) throws Exception {
+    public static void gitLog(Path directory) throws Exception {
         runCommand(directory, "git", "log");
     }
 
