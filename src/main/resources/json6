@@ -74,7 +74,7 @@
           }
       },
       "suppressPostLaunchRequests": false,
-      "template": "gmFullVideoAutoEvent123",
+      "template": "gmFullVideoAutoEvent123456",
       "analyticsData": {
           "vzdl.page.displayChannel": "MVA",
           "vzwi.mvmapp.pageName": "/mf/cband/home setup/Router location",
