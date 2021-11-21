@@ -10,14 +10,15 @@ public class JGITExamples {
 
 
         Path path = Paths.get("/Users/shaid/Documents/MyWorld");
-        Git.gitBranch(path);
+        Git.gitLogInline(path);
+        //Git.gitDiff(path);
         //extracted(path);
     }
 
     private static void extracted() throws Exception {
         Path path = Paths.get("/Users/shaid/Documents/MyWorld");
         /* Sync code from remote to local*/
-        Git.diffPull(path);
+        Git.gitPull(path);
         /* Get Json changes from git */
         String diffCMD = "git -C /Users/shaid/Documents/MyWorld/ diff b78efecf484057961a152c8cece18b598fe7c7dd";
         List<Diff> gitChanges = Git.getJsonChangesfromGIT(path, diffCMD);

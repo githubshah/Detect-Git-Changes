@@ -45,7 +45,7 @@ public class Git {
     }
 
     public static void gitDiff(Path directory) throws Exception {
-        runCommand(directory, "git", "diff", "d0dfaad9ee4d44dbf085b3db24c034ac75d75e30");
+        runCommand(directory, "git", "diff", "ca793d340414f65e142966d94896e6644db78d3d");
     }
 
     public static void gitStage(Path directory) throws Exception {
@@ -60,12 +60,16 @@ public class Git {
         runCommand(directory, "git", "push");
     }
 
-    public static void diffPull(Path directory) throws Exception {
+    public static void gitPull(Path directory) throws Exception {
         runCommand(directory, "git", "pull");
     }
 
-    public static void log(Path directory) throws Exception {
-        runCommand(directory, "git", "branch");
+    public static void gitLog(Path directory) throws Exception {
+        runCommand(directory, "git", "log");
+    }
+
+    public static void gitLogInline(Path directory) throws Exception {
+        runCommand(directory, "git", "log", "--oneline");
     }
 
     public static void gitClone(Path directory, String originUrl) throws Exception {
@@ -77,7 +81,6 @@ public class Git {
         if (!Files.exists(directory)) {
             throw new RuntimeException("can't run command in non-existing directory '" + directory + "'");
         }
-
         ProcessBuilder pb = new ProcessBuilder()
                 .command(command)
                 .directory(directory.toFile());
@@ -85,6 +88,7 @@ public class Git {
 
         StreamGobbler errorGobbler = new StreamGobbler(p.getErrorStream(), "ERROR");
         StreamGobbler outputGobbler = new StreamGobbler(p.getInputStream(), "OUTPUT");
+        outputGobbler.start();
         errorGobbler.start();
         int exit = p.waitFor();
         errorGobbler.join();
