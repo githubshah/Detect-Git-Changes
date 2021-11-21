@@ -11,7 +11,7 @@ public class JGITExamples {
 
         Path path = Paths.get("/Users/shaid/Documents/MyWorld");
         Git.gitLogInline(path);
-        //Git.gitDiff(path);
+        Git.gitDiff(path);
         //extracted(path);
     }
 
