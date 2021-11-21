@@ -12,27 +12,32 @@ public class JGITExamples {
 
         Path path = Paths.get("/Users/shaid/Documents/MyWorld");
 
-        String diffCMD = "git -C /Users/shaid/Documents/MyWorld/ log --oneline";
-        String logCallable = Git.getLogCallable(path, diffCMD);
-        System.out.println("Remote commit: " + logCallable);
+        /* Sync code from remote to local*/
+        //Git.gitPull(path);
 
-        CommitHistory shaid = new CommitHistory(logCallable, new Date(), "shaid");
-        new CommitToFile().updateCommit(shaid);
+        //CommitHistory savedCommit = new CommitToFile().getSavedCommit();
 
-        CommitHistory savedCommit = new CommitToFile().getSavedCommit();
-        System.out.println("Saved Commit : " + savedCommit.commitId);
+        CommitHistory savedCommit = new CommitHistory("ed6ffd3876ab90a265f963c016cae11a34b7d25b", new Date(), "shaid");
+        extracted(path, savedCommit);
 
-        String cId = savedCommit.commitId;
-
-        //Git.gitDiff(path);
-        extracted(path, cId);
+//        String diffCMD = "git -C /Users/shaid/Documents/MyWorld/ log --oneline";
+//        String logCallable = Git.getLogCallable(path, diffCMD);
+//        System.out.println("Remote commit: " + logCallable);
+//
+//        CommitHistory shaid = new CommitHistory(logCallable, new Date(), "shaid");
+//        new CommitToFile().updateCommit(shaid);
     }
 
-    private static void extracted(Path path, String cId) throws Exception {
-        /* Sync code from remote to local*/
-        Git.gitPull(path);
+    private static void extracted(Path path, CommitHistory commitHistory) throws Exception {
         /* Get Json changes from git */
-        String diffCMD = "git -C /Users/shaid/Documents/MyWorld/ diff " + cId;
+        System.out.println("Saved Commit Id: " + commitHistory);
+        String diffCMD = "";
+        if (commitHistory == null) {
+            diffCMD = "git -C /Users/shaid/Documents/MyWorld/ diff";
+        } else {
+            diffCMD = "git -C /Users/shaid/Documents/MyWorld/ diff " + commitHistory.commitId;
+        }
+        System.out.println("cmd to be run :" + diffCMD);
         List<Diff> gitChanges = Git.getJsonChangesfromGIT(path, diffCMD);
         /* Get DB scripts corresponding to json changes */
         String dbScriptFile = "dbscript";
