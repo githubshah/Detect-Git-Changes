@@ -1,5 +1,7 @@
 package com.git.hub;
 
+import com.git.hub.task.DiffCallable;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,11 +9,8 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.Callable;
-import java.util.stream.Collectors;
 
 public class Git {
 
@@ -129,7 +128,7 @@ public class Git {
 
         Process p = Runtime.getRuntime().exec(command);
 
-        StreamCallable outputGobbler = new StreamCallable(p.getInputStream(), "OUTPUT");
+        DiffCallable outputGobbler = new DiffCallable(p.getInputStream(), "OUTPUT");
         List<Diff> gitChanges = outputGobbler.call();
 
         int exit = p.waitFor();
@@ -139,74 +138,4 @@ public class Git {
         }
         return gitChanges;
     }
-
-    private static class StreamCallable implements Callable {
-
-        private final InputStream is;
-        private final String type;
-
-        private StreamCallable(InputStream is, String type) {
-            this.is = is;
-            this.type = type;
-        }
-
-        @Override
-        public List<Diff> call() {
-            List<Diff> gitDiff = new ArrayList<>();
-            try (BufferedReader br = new BufferedReader(new InputStreamReader(is));) {
-                String line;
-                String parent = "";
-                List<Diff> diff = new ArrayList<>();
-                while ((line = br.readLine()) != null) {
-
-                    if (line.contains(":{")) {
-                        parent = line.substring(1).trim();
-                    }
-                    if (line.startsWith("-\t") || line.startsWith("- ") || line.startsWith("+\t") || line.startsWith("+ ")) {
-
-                        if (!line.contains(":") && (line.contains("{") || line.contains("}") || line.contains("[") || line.contains("]")))
-                            continue;
-
-                        EVENT event;
-                        if (line.startsWith("- ") || line.startsWith("-\t")) {
-                            event = EVENT.DELETED;
-                        } else {
-                            event = EVENT.ADD;
-                        }
-                        String parent1 = parent.trim().replace(":{", "").replace('"', ' ').trim();
-                        String key;
-                        String value;
-                        if (line.endsWith("},") || line.endsWith("}")) {
-                            key = "NAN";
-                            value = line.substring(1).trim();
-                            value = value.substring(0, value.length() - 1);
-                            if (value.endsWith(",")) value = value.substring(0, value.length() - 1);
-                            diff.add(new Diff(event, parent1, line, key, value.trim()));
-                        } else {
-                            String[] split = line.split(":");
-                            key = split[0].replaceAll("\"", "").replaceAll(" ", "").substring(1).trim();
-                            if (split.length == 1) {
-                                continue;
-                            }
-
-                            value = split[1].replace("\"", ""); // remove starting white space
-                            if (value.endsWith(",")) value = value.substring(0, value.length() - 1).trim();
-                            value = value.trim();
-                            if (value.length() == 1 && (value.contains("[") || value.contains("]") || value.contains("{") || value.contains("}")))
-                                continue;
-                            diff.add(new Diff(event, parent1, line, key, value.trim()));
-                        }
-
-                    }
-                }
-
-                gitDiff = diff.stream().filter(x -> x.getEvent().equals(EVENT.ADD)).collect(Collectors.toList());
-
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-            return gitDiff;
-        }
-    }
-
 }
