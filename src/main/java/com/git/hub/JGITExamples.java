@@ -10,7 +10,7 @@ public class JGITExamples {
 
 
         Path path = Paths.get("/Users/shaid/Documents/MyWorld");
-        Git.gitBranch(path);
+        Git.log(path);
         //extracted(path);
     }
 

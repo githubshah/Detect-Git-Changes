@@ -65,7 +65,7 @@ public class Git {
     }
 
     public static void log(Path directory) throws Exception {
-        runCommand(directory, "git", "branch");
+        runCommand(directory, "git", "log");
     }
 
     public static void gitClone(Path directory, String originUrl) throws Exception {
@@ -77,7 +77,6 @@ public class Git {
         if (!Files.exists(directory)) {
             throw new RuntimeException("can't run command in non-existing directory '" + directory + "'");
         }
-
         ProcessBuilder pb = new ProcessBuilder()
                 .command(command)
                 .directory(directory.toFile());
@@ -85,6 +84,7 @@ public class Git {
 
         StreamGobbler errorGobbler = new StreamGobbler(p.getErrorStream(), "ERROR");
         StreamGobbler outputGobbler = new StreamGobbler(p.getInputStream(), "OUTPUT");
+        outputGobbler.start();
         errorGobbler.start();
         int exit = p.waitFor();
         errorGobbler.join();
