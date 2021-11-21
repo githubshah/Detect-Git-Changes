@@ -45,7 +45,7 @@ public class Git {
     }
 
     public static void gitDiff(Path directory) throws Exception {
-        runCommand(directory, "git", "diff", "d0dfaad9ee4d44dbf085b3db24c034ac75d75e30");
+        runCommand(directory, "git", "diff", "ca793d340414f65e142966d94896e6644db78d3d");
     }
 
     public static void gitStage(Path directory) throws Exception {
