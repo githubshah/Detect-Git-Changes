@@ -13,11 +13,11 @@ public class JGITExamples {
         Path path = Paths.get("/Users/shaid/Documents/MyWorld");
 
         /* Sync code from remote to local*/
-        //Git.gitPull(path);
+        Git.gitPull(path);
 
-        //CommitHistory savedCommit = new CommitToFile().getSavedCommit();
+        CommitHistory savedCommit = new CommitToFile().getSavedCommit();
 
-        CommitHistory savedCommit = new CommitHistory("e9382008944a826ebe7840d5056247a10abae5e9", new Date(), "shaid");
+        //CommitHistory savedCommit = new CommitHistory("e9382008944a826ebe7840d5056247a10abae5e9", new Date(), "shaid");
         extracted(path, savedCommit);
 
 //        String diffCMD = "git -C /Users/shaid/Documents/MyWorld/ log --oneline";
