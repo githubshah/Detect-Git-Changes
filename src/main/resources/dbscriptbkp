@@ -1,5 +1,5 @@
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','Links','Video transcript','Y','titanCBCompassOverviewTranscript','Links','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','template','gmFullVideoAutoEvent123456','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','title1','MVA','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','title2','/mf/cband/home setup/Router location','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','title3','titanCBRouterLocation','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','Links','linksValue1','Y','titanCBCompassOverviewTranscript','Links','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','template','template1','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','title1','titleValue11','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','title2','titleValue12','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','title3','titleValue13','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
