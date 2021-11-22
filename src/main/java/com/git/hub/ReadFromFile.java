@@ -19,7 +19,7 @@ class DBScript {
     public List<String> compare(List<Diff> collect, String fileName1) {
         this.diffs = collect;
         this.values = diffs.stream().map(Diff::getValue).filter(x -> !x.isEmpty()).distinct().collect(Collectors.toList());
-        this.valueKey = diffs.stream().collect(Collectors.toMap(x -> x.getKey(), Diff::getKey, (address1, address2) -> {
+        this.valueKey = diffs.stream().collect(Collectors.toMap(x -> x.getKey()+":"+x.getValue(), Diff::getKey, (address1, address2) -> {
             System.out.println("duplicate key found! > " + address2);
             return address2;
         }));
