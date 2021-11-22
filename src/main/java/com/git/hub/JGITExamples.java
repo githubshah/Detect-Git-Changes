@@ -20,12 +20,12 @@ public class JGITExamples {
         //CommitHistory savedCommit = new CommitHistory("e9382008944a826ebe7840d5056247a10abae5e9", new Date(), "shaid");
         extracted(path, savedCommit);
 
-//        String diffCMD = "git -C /Users/shaid/Documents/MyWorld/ log --oneline";
-//        String logCallable = Git.getLogCallable(path, diffCMD);
-//        System.out.println("Remote commit: " + logCallable);
-//
-//        CommitHistory shaid = new CommitHistory(logCallable, new Date(), "shaid");
-//        new CommitToFile().updateCommit(shaid);
+        String diffCMD = "git -C /Users/shaid/Documents/MyWorld/ log --oneline";
+        String logCallable = Git.getLogCallable(path, diffCMD);
+        System.out.println("Remote commit: " + logCallable);
+
+        CommitHistory shaid = new CommitHistory(logCallable, new Date(), "shaid");
+        new CommitToFile().updateCommit(shaid);
     }
 
     private static void extracted(Path path, CommitHistory commitHistory) throws Exception {
