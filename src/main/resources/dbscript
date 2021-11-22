@@ -1,34 +1,5 @@
-"C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2020.3.3\jbr\bin\java.exe" "-javaagent:C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2020.3.3\lib\idea_rt.jar=52738:C:\Program Files (x86)\JetBrains\IntelliJ IDEA Community Edition 2020.3.3\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\hussh7s\Documents\sql-gen\sqlgen\target\classes;C:\Users\hussh7s\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.10.1\jackson-databind-2.10.1.jar;C:\Users\hussh7s\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.10.1\jackson-annotations-2.10.1.jar;C:\Users\hussh7s\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.10.1\jackson-core-2.10.1.jar;C:\Users\hussh7s\.m2\repository\org\apache\commons\commons-lang3\3.9\commons-lang3-3.9.jar;C:\Users\hussh7s\.m2\repository\org\apache\commons\commons-text\1.4\commons-text-1.4.jar;C:\Users\hussh7s\.m2\repository\org\apache\commons\commons-collections4\4.4\commons-collections4-4.4.jar;C:\Users\hussh7s\.m2\repository\org\json\json\20160810\json-20160810.jar com.verizon.wireless.sqlgen.GeminiSQLGen
-
------------------------------------------------ titanCBCompassOverview -----------------------------------------------
-
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PROPERTY('MSS_MF','LOG_TITANCBCOMPASSOVERVIEW','true','Logging flag for titanCBCompassOverview','konerva');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PAGE_INFO('titanCBCompassOverview','openPage','','Y',1,'push','titanCBGettingStarted','','','','','hussh7s','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_CLI_SVC_INFO('titanCBCompassOverview','hussh7s','None');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','SwipeRight','continue123','Y','titanCBCompassGetStarted','SwipeRight','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','title', 'Continue123','Y','titanCBCompassGetStarted','videoFinishEvent','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PAGE_INFO('titanCBCompassGetStarted','presentationStyle','','Y',1,'modal123','5G Home Gemini','','','','','hussh7s','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_PAGE_INFO('titanCBCompassOverviewTranscript','openPage','modal123','Y',1,'modal','5G Home Gemini','','','','','hussh7s','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','Links','Video transcript','Y','titanCBCompassOverviewTranscript','Links','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','template','gmFullVideoAutoEvent123','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzdl.page.displayChannel','MVA','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzwi.mvmapp.pageName','/mf/cband/home setup/Router location','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzdl.page.id','titanCBRouterLocation','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzdl.page.subSubCategory','/mf/cband/home setup','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzdl.page.channel','home setup','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzdl.page.siteSection','home setup','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzdl.page.sourceChannel','MVA','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzdl.page.name','Router location','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzdl.target.engagement.intent','cband','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzdl.page.flow','Titan C Band home setup','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','vzdl.page.subFlow','cband','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','showAllStepsMenu','false','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','rightPanelButtonLink','Support','Y','titanCBGetSupportConfigDummy','rightPanelButtonLink','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','videoURL','https://ss7.vzw.com/is/content/VerizonWireless/T1_Cband_Compass_Video','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','suppressPostLaunchRequests','false','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','enableSwipeNav','false','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','cache','true','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','looping','false','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','showControls','true','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
-
-Process finished with exit code 0
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','Links','linksValue1','Y','titanCBCompassOverviewTranscript','Links','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','template','template1','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','N');
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','title1','titleValue11','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','title2','titleValue12','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');
+CALL MSS_MF_ADMIN.MF_PRELOADS.UPSERT_MESSAGE('titanCBCompassOverview','static','EN','title3','titleValue13','Y','','','','>=7.5','hussh7s','5G Home Luna','titanCBCompassOverview','Y');

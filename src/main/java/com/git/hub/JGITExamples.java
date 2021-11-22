@@ -17,7 +17,7 @@ public class JGITExamples {
 
         //CommitHistory savedCommit = new CommitToFile().getSavedCommit();
 
-        CommitHistory savedCommit = new CommitHistory("ed6ffd3876ab90a265f963c016cae11a34b7d25b", new Date(), "shaid");
+        CommitHistory savedCommit = new CommitHistory("e9382008944a826ebe7840d5056247a10abae5e9", new Date(), "shaid");
         extracted(path, savedCommit);
 
 //        String diffCMD = "git -C /Users/shaid/Documents/MyWorld/ log --oneline";
